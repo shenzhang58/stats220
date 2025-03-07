@@ -44,4 +44,4 @@ Here’s an example of an animated GIF:
 ![Animated GIF](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTIyejlkZzN2cTlsY2d1enB5ZzQydnQ3aWhtb3VyZTczcWV6c2ZrNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gxRtSPjkXgdR6/giphy.gif)
 
 ## Part B
-![Gamer Meme](https://memes.co.in/games-meme/photos/253/gamer-be-like)
+![Example GIF](https://media.giphy.com/media/3o7TKSjRrfIPjeiVyM/giphy.gif) 
