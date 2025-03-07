@@ -24,15 +24,13 @@ a different animated GIF than the one given to you in the foundation project
 This is a **bold** statement to emphasize the importance of this project. Here is an *italicized* statement for additional context.
 
  
-
 - **Unordered List Item 1**: A key feature of this project.
 - **Unordered List Item 2**: Another important feature.
 
-### Steps to Run (Level 3 Header)
 
-1. **Ordered List Item 1**: Clone the repository.
-2. **Ordered List Item 2**: Install dependencies.
-3. **Ordered List Item 3**: Run the project.
+1. **Ordered List Item 1**:  feature A
+2. **Ordered List Item 2**:  feature B
+3. **Ordered List Item 3**:  feature C
 
 ### Resources
 
