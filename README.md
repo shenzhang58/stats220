@@ -34,7 +34,7 @@ This is a **bold** statement to emphasize the importance of this project. Here i
 
 ### Resources
 
-- Check out the [Markdown Guide](https://www.markdownguide.org/) for more syntax tips.
+- Check out the [Markdown Guide]([https://www.markdownguide.org/](https://markdownguide.offshoot.io/basic-syntax/)) for more syntax tips.
 - Visit [GitHub Docs](https://docs.github.com/) to learn more about GitHub.
 
 ### Example Animated GIF
