@@ -11,6 +11,12 @@ A little about me:
 A meme that captures how I currently feel about my university studies is ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
 
 
+use of two different levels of headers
+use of two different types of bullet points (ordered and unordered)
+use of bold and italics
+use of links to other websites
+a different animated GIF than the one given to you in the foundation project
+
 # My Project (Level 1 Header)
 
 ## Description (Level 2 Header)
