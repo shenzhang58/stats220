@@ -23,7 +23,7 @@ a different animated GIF than the one given to you in the foundation project
 
 This is a **bold** statement to emphasize the importance of this project. Here is an *italicized* statement for additional context.
 
-### Features (Level 3 Header)
+ 
 
 - **Unordered List Item 1**: A key feature of this project.
 - **Unordered List Item 2**: Another important feature.
