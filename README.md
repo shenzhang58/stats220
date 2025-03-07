@@ -17,9 +17,9 @@ use of bold and italics
 use of links to other websites
 a different animated GIF than the one given to you in the foundation project
 
-# My Project (Level 1 Header)
+# Project 1
 
-## Description (Level 2 Header)
+## Part A
 
 This is a **bold** statement to emphasize the importance of this project. Here is an *italicized* statement for additional context.
 
