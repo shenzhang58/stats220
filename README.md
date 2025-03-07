@@ -44,4 +44,4 @@ Here’s an example of an animated GIF:
 ![Animated GIF](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTIyejlkZzN2cTlsY2d1enB5ZzQydnQ3aWhtb3VyZTczcWV6c2ZrNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gxRtSPjkXgdR6/giphy.gif)
 
 ## Part B
-![Animal Meme](https://preview.redd.it/f08d69kbrqi81.jpg?auto=webp&s=eb2879970d6ea6cf5e221b86b1605a3205512e5e)
+![](https://preview.redd.it/f08d69kbrqi81.jpg?auto=webp&s=eb2879970d6ea6cf5e221b86b1605a3205512e5e)
