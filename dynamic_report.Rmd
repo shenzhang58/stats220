@@ -1,0 +1,154 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+ 
+
+
+
+```
+
+```{css}
+
+}
+ 
+```
+
+```{r, echo=FALSE}
+# Install and load required packages
+
+library(tidyverse)
+library(scales)  # For formatting axis labels
+
+# Load data from Google Sheets
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQV2BdOIJpHjPZLRPbA-zrND5pnzK314yvd-VvwzBrzjxxP3316221gVDhnw0WBqzB_LuFpUk2lIrqP/pub?output=csv")
+ 
+# Data cleaning pipeline
+latest__data <- logged_data %>%
+  # Rename columns using position index
+  rename(
+    Timestamp = 1,
+    Budget = 2,
+    Property_Type = 3,
+    Regions = 4
+  ) %>%
+  # Convert data types
+  mutate(
+    Budget = as.numeric(Budget),
+    Property_Type = as.factor(Property_Type)
+  ) %>%
+  # Clean region data
+  mutate(
+    # Remove parentheses and their contents
+    Regions = str_replace_all(Regions, "\\(.*?\\)", ""),
+    # Split multi-select regions into separate rows
+    Regions = str_split(Regions, ",\\s+")
+  ) %>%
+  unnest(Regions) %>%
+  # Categorize main regions
+  mutate(
+    Main_Region = case_when(
+      str_detect(Regions, "Central") ~ "Central Auckland",
+      str_detect(Regions, "East") ~ "East Auckland",
+      str_detect(Regions, "North") ~ "North Shore",
+      str_detect(Regions, "West") ~ "West Auckland",
+      str_detect(Regions, "South") ~ "South Auckland",
+      str_detect(Regions, "Rural") ~ "Rural Areas",
+      TRUE ~ "Other"
+    )
+  )
+
+
+avg_budget <- mean(latest__data$Budget)
+
+```
+
+## What's going on with this data?
+
+## Analysis Results
+
+### Key Metrics
+
+-   Total records: `r nrow(logged_data)`
+-   `r paste("Average budget: NZ$", round(avg_budget, 2), "million")`
+-   Maximum budget: `r paste0(max(latest__data$Budget), "M NZD")`
+
+```{r, echo=FALSE}
+
+
+# Generate regional statistics
+region_stats <- latest__data %>%
+  group_by(Main_Region) %>%
+  summarise(Count = n()) %>%
+  arrange(desc(Count))
+
+
+
+# Property type distribution visualization (pie chart)
+property_summary <- latest__data %>%
+  count(Property_Type) %>%
+  mutate(Percentage = n / sum(n) * 100)
+
+ggplot(property_summary, aes(x = "", y = Percentage, fill = Property_Type)) +
+  geom_col(width = 1, color = "white") +
+  coord_polar(theta = "y") +
+  geom_text(
+    aes(label = paste0(round(Percentage), "%")),
+    position = position_stack(vjust = 0.5),
+    color = "white",
+    size = 4
+  ) +
+  labs(
+    title = "Property Type Preferences",
+    fill = "Property Type",
+    x = NULL,
+    y = NULL
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    panel.grid = element_blank()
+  ) +
+  scale_fill_brewer(palette = "Set2")
+
+
+```
+
+```{r, echo=FALSE}
+
+# Budget distribution visualization (histogram with density curve)
+ggplot(latest__data, aes(x = Budget)) +
+  geom_histogram(
+    aes(y = ..density..),
+    bins = 15,
+    fill = "orange",
+    color = "white"
+  ) +
+  geom_density(alpha = 0.2, fill = "blue") +
+  labs(
+    title = "Budget Distribution Analysis",
+    x = "Budget (Million NZD)",
+    y = "Density"
+  ) +
+  scale_x_continuous(labels = dollar_format(suffix = "M")) +
+  theme_classic()
+
+
+
+```
+
+```{r, echo=FALSE}
+# Regional distribution visualization (horizontal bar chart)
+ggplot(region_stats, aes(x = reorder(Main_Region, Count), y = Count)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Property Preference by Main Region",
+       x = "Main Region",
+       y = "Number of Buyers") +
+  theme_minimal()
+
+```
