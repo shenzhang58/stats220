@@ -23,5 +23,5 @@ In this course I hope to:
 A meme that captures how I currently feel about my university studies is:
 
  
-
-![](https://i.kym-cdn.com/photos/images/original/002/555/706/d66.jpg)
+ 
+![](https://i.kym-cdn.com/photos/images/original/001/176/214/463.png )
