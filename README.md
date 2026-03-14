@@ -24,4 +24,4 @@ A meme that captures how I currently feel about my university studies is:
 
  
  
-![](https://i.kym-cdn.com/photos/images/original/001/176/214/463.png )
+![]( https://i.kym-cdn.com/photos/images/original/001/245/632/282.jpg )
