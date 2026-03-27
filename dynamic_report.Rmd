@@ -1,0 +1,75 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+
+```
+
+## Analysis of Waiting Times and Opposite‑Direction Buses Across Peak Periods
+
+ 
+
+```{r}
+# Load required libraries
+library(tidyverse)   
+#  Read data from URL into data frame 'logged_data'
+ 
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQG3iHTYcFJaPBsncTtATK35WDj0nYos1ZubJcnFGp-Tm-vqKYHmCNFLfCmB32nFe2Sx9OOCCS3BrA-/pub?gid=1301837894&single=true&output=csv")
+
+ 
+
+ 
+# 2. Rename variables and create new data frame 'latest_data'
+ 
+latest_data <- logged_data %>%
+  rename(
+    timestamp        = Timestamp,
+    observation_period = `1. Observation Period`,
+    waiting_time     = `2. Waiting Time (minutes)`,
+    opposite_buses   = `3.Number of Opposite‑Direction 70 Buses Observed`
+  )
+
+ 
+#   Average waiting time
+#    Maximum waiting time
+ 
+
+mean_wait <- mean(latest_data$waiting_time, na.rm = TRUE)
+max_wait <- max(latest_data$waiting_time, na.rm = TRUE)
+ 
+
+```
+
+### Dynamic Comments
+
+Based on the collected data, the **average waiting time** across all observations is `r round(mean_wait, 1)` minutes.  
+The maximum waiting time recorded was `r max_wait` minutes.
+
+
+### Bar Charts
+
+```{r}
+# Chart 1: Waiting time frequency by period
+p1 <- ggplot(latest_data, aes(x = factor(waiting_time), fill = observation_period)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Frequency of waiting times by observation period",
+       x = "Waiting time (minutes)", y = "Count", fill = "Observation period")  
+
+# Chart 2: Proportion of opposite-direction buses by period
+p2 <- ggplot(latest_data, aes(x = observation_period, fill = opposite_buses)) +
+  geom_bar(position = "fill") +
+  labs(title = "Proportion of opposite-direction buses by period",
+       x = "Observation period", y = "Proportion", fill = "Number of buses")  
+
+# Display charts
+p1
+p2
+```
+
